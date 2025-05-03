@@ -10,53 +10,72 @@ import Privetroute from "./Privetroute";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Dashboard/Cart";
 import Allusers from "../Pages/Dashboard/Allusers";
+import AddItemms from "../Pages/Dashboard/AddItemms";
+import AdminRoutes from "./AdminRoutes";
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    children: [
       {
-        path:'/',
-        element:<MainLayout></MainLayout>,
-        children:[
-            {
-                path:'/',
-                element:<Home></Home>
-            },
-            {
-              path:'/menu',
-              element:<Menu></Menu>
-            },
-            {
-              path:'/order/:category',
-              element:<Order></Order>
-            },
-            {
-              path:'/login',
-              element:<Login></Login>
-            },
-            {
-              path:'/sign-up',
-              element:<SignUp></SignUp>
-            },
-            {
-              path:'/secret',
-              element: <Privetroute><Secret></Secret></Privetroute> 
-            }
-        ]
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path:'dashboard',
-        element: <Privetroute><Dashboard></Dashboard></Privetroute>,
-        children: [
-          {
-            path:'cart',
-            element:<Cart></Cart>
-          },
-          // Admin Routes
-          {
-            path:'users',
-            element:<Allusers></Allusers>
-          }
-        ]
-      }
-])
+        path: "/menu",
+        element: <Menu></Menu>,
+      },
+      {
+        path: "/order/:category",
+        element: <Order></Order>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: "/secret",
+        element: (
+          <Privetroute>
+            <Secret></Secret>
+          </Privetroute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <Privetroute>
+        <Dashboard></Dashboard>
+      </Privetroute>
+    ),
+    children: [
+      // Normal user routes
+      {
+        path: "cart",
+        element: <Cart></Cart>,
+      },
+      // Admin Routes
+      {
+        path: "add-items",
+        element: (
+          <AdminRoutes>
+            <AddItemms></AddItemms>
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "users",
+        element: <AdminRoutes><Allusers></Allusers></AdminRoutes>,
+      },
+    ],
+  },
+]);
 
 export default router;

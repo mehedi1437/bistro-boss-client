@@ -97,7 +97,7 @@ const Dashboard = () => {
         </ul>
       </div>
       {/* Sidebar */}
-      <div className="flex-1 p-10">
+      <div className="flex-1 p-3">
         <Outlet></Outlet>
       </div>
     </div>

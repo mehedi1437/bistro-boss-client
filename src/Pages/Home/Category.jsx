@@ -10,7 +10,7 @@ import img_5 from '../../assets/home/slide5.jpg'
 import SectionTitle from '../../Cemponents/SectionTitle';
 const Category = () => {
     return (
-        <div className='my-20'>
+        <div className='my-20 '>
             <SectionTitle subHeading={'From 11 am to 10 pm '}  heading={'Order Online'}></SectionTitle>
 
              <Swiper
@@ -21,7 +21,7 @@ const Category = () => {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper"
+        className="mySwiper my-10"
       >
         <SwiperSlide>
             <img src={img_1} alt="" />
