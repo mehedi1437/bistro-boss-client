@@ -1,16 +1,48 @@
 import { FaUtensils } from "react-icons/fa";
 import SectionTitle from "../../Cemponents/SectionTitle";
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const AddItemms = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data);
+  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+  const onSubmit = async (data) => {
+    console.log("Form data", data);
+    // image upload to image BB and then get an url
+    const imageFile = { image: data.image[0] };
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    if (res.data.success) {
+      // Now send the menu item to the server with the image url
+      const menuItem = {
+        name: data.name,
+        category: data.category,
+        price: parseFloat(data.price),
+        recipe: data.recipe,
+        image: res.data?.data?.display_url,
+      };
+      //
+      const menuRes = await axiosSecure.post("/menu", menuItem);
+      console.log(menuRes.data);
+      if(menuRes?.data.insertedId ){
+        toast.success('Menu Item Added Successfully')
+        reset();
+      }
+    }
+    console.log("Image Upload response", res.data);
   };
   return (
     <div className="max-w-3xl mx-auto">
@@ -43,16 +75,20 @@ const AddItemms = () => {
                   <div className="w-1/2">
                     <label className="label">Category*</label>
                     <select
-                      defaultValue="Pick a color"
+                      defaultValue="default"
                       className="input w-full"
                       {...register("category", {
                         required: "Category is required",
                       })}
                     >
-                      <option disabled={true}>Category</option>
-                      <option>Crimson</option>
-                      <option>Amber</option>
-                      <option>Velvet</option>
+                      <option disabled={true} value="default">
+                        select a Category
+                      </option>
+                      <option value={"salad"}>Salad</option>
+                      <option value={"pizza"}>Pizza</option>
+                      <option value={"soup"}>soup</option>
+                      <option value={"dessert"}>Dessert</option>
+                      <option value={"srinks"}>Drinks</option>
                     </select>
                     {errors.category && (
                       <span className="text-red-500 text-sm">

@@ -6,7 +6,7 @@ const MainLayout = () => {
     const location = useLocation();
     const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('sign-up')
     return (
-        <div>
+        <div className="container mx-auto">
             { noHeaderFooter || <Navbar></Navbar>}
             <Outlet></Outlet>
            { noHeaderFooter || <Footer></Footer>}
