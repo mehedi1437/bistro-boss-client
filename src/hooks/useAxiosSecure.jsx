@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://bistro-boss-server-sooty-psi.vercel.app",
 });
 const useAxiosSecure = () => {
   const { logOut } = useAuth();
@@ -30,7 +30,7 @@ const useAxiosSecure = () => {
     },
     async (error) => {
       // console.log("Error from Axios interceptor response", error);
-      if (error.response.status === 401 || error.response.status === 403) {
+      if (error.response?.status === 401 || error.response?.status === 403) {
         // Logout the user or redirect to login page
         await logOut();
         toast.error("Session expired. Please login again.");

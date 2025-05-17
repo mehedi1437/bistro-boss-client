@@ -3,53 +3,61 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { HiShoppingCart } from "react-icons/hi";
 import useCarts from "../../hooks/useCarts";
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [cart] = useCarts()
+  const [cart] = useCarts();
+
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((error) => console.log(error));
   };
+
   const navItems = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className="font-medium hover:text-blue-500">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/menu">Menu</NavLink>
+        <NavLink to="/menu" className="font-medium hover:text-blue-500">Menu</NavLink>
       </li>
       <li>
-        <NavLink to="/order/salad">Order</NavLink>
+        <NavLink to="/order/salad" className="font-medium hover:text-blue-500">Order</NavLink>
       </li>
       <li>
-        <Link to="/dashboard/cart">
-          <button className="btn">
-          <HiShoppingCart className="text-3xl" />
-            <div className="badge badge-secondary">+{cart.length}</div>
-          </button>
+        <Link to="/dashboard/cart" className="relative">
+          <HiShoppingCart className="text-2xl" />
+          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
+            {cart.length}
+          </span>
         </Link>
       </li>
-      {user ? (
-        <li>
-          <NavLink onClick={handleLogOut}>LogOut</NavLink>
-        </li>
-      ) : (
-        <li>
-          <NavLink to="/login">Login</NavLink>
-        </li>
-      )}
-      
+ 
     </>
   );
+
   return (
-    <div className="navbar h-10  fixed z-10 bg-opacity-25 bg-base-100 container  ">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+    <div className="navbar container fixed z-50 top-0 bg-white bg-opacity-30 shadow-md backdrop-blur-md px-4 py-3">
+      <div className="max-w-7xl w-full mx-auto flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <Link to="/" className="text-xl font-bold tracking-tight text-gray-800">
+            Bistro Boss
+          </Link>
+        </div>
+
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex">
+          <ul className="menu menu-horizontal gap-6">{navItems}</ul>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden dropdown">
+          <label tabIndex={0} className="btn btn-ghost p-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -58,24 +66,30 @@ const Navbar = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
+                d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
-          </div>
+          </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 p-3 shadow bg-white rounded-box w-52"
           >
             {navItems}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl"> Bistro Boss</a>
-      </div>
-      <div className="navbar-center hidden lg:flex  ">
-        <ul className="menu menu-horizontal px-1">{navItems}</ul>
-      </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+
+        {/* Optional Right Button */}
+            {user ? (
+        <li>
+          <button onClick={handleLogOut} className="font-medium hover:text-red-500">
+            Logout
+          </button>
+        </li>
+      ) : (
+        <li>
+          <NavLink to="/login" className="font-medium hover:text-blue-500">Login</NavLink>
+        </li>
+      )}
       </div>
     </div>
   );
