@@ -17,7 +17,7 @@ const AdminRoutes = ({ children }) => {
     return children;
   }
   return (
-    <Navigate to="/" state={location.pathname} replace={true}></Navigate>
+    <Navigate to="/" state={location?.pathname} replace={true}></Navigate>
   );
 };
 

@@ -33,6 +33,10 @@
 - View and manage customer orders
 - Secure routes with **JWT authentication**
 
+### 🔐 Admin Panel
+- for Checking the admin routes
+**Admin Email** – mehedihasan12@gmail.com
+**Admin Password** – asdfg12345
 ---
 
 ## 🔧 Tech Stack
