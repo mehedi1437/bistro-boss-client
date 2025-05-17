@@ -12,9 +12,9 @@
 
 
 ## 📷 Screenshots
-![Homepage](https://ibb.co/6c7Y2wMf/Screenshot-4)
-![Homepage](https://ibb.co/sdRpHVV1)
-![Menu With category](https://ibb.co/mCSBQnj1)
+![Homepage](https://i.ibb.co/60ySzH6S/Screenshot-4.png)
+![Homepage](https://i.ibb.co/JwyFnVVT/Screenshot-5.png)
+![Menu With category](https://i.ibb.co/fz65RrzW/Screenshot-6.png)
 ---
 
 ## ✨ Features
