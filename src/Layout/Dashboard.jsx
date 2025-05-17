@@ -68,7 +68,7 @@ const Dashboard = () => {
                 <IoHome className="text-3xl"> </IoHome>
                 <NavLink  className={({ isActive }) =>
                     isActive ? "text-white underline" : "hover:text-white"
-                  } to="/dashboard"> User Home</NavLink>
+                  } to="/dashboard/user-home"> User Home</NavLink>
               </li>
               <li className="flex items-center gap-3 text-2xl font-semibold">
                 <HiShoppingCart className="text-3xl"> </HiShoppingCart>
@@ -82,19 +82,19 @@ const Dashboard = () => {
                 <SlCalender className="text-3xl"> </SlCalender>
                 <NavLink  className={({ isActive }) =>
                     isActive ? "text-white underline" : "hover:text-white"
-                  } to="/dashboard"> Reservation</NavLink>
+                  } to="/dashboard/reservation"> Reservation</NavLink>
               </li>
               <li className="flex items-center gap-3 text-2xl font-semibold">
                 <MdReviews className="text-3xl"> </MdReviews>
                 <NavLink  className={({ isActive }) =>
                     isActive ? "text-white underline" : "hover:text-white"
-                  } to="/dashboard">Add Review</NavLink>
+                  } to="/dashboard/add-review">Add Review</NavLink>
               </li>
               <li className="flex items-center gap-3 text-2xl font-semibold">
                 <FaList className="text-3xl"> </FaList>
                 <NavLink  className={({ isActive }) =>
                     isActive ? "text-white underline" : "hover:text-white"
-                  } to="/dashboard"> My Bookings</NavLink>
+                  } to="/dashboard/my-bookings"> My Bookings</NavLink>
               </li>
             </>
           )}

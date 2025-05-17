@@ -1,8 +1,61 @@
-# React + Vite
+# 🍽️ Bistro Boss – Restaurant Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Bistro Boss** is a full-featured restaurant web application with a clean UI for customers and a powerful admin panel for managing menu items, users, and orders. The site is secured with JWT authentication and uses MongoDB for storing and managing dynamic data through CRUD operations.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔥 Live Site
+
+[👉 Visit Bistro Boss Live](https://bistro-boss-38069.web.app)
+## 🚀 Server Side Git Hub Link
+[👉 Backend Github Link ](https://github.com/mehedi1437/bistro-boss-server)
+
+
+## 📷 Screenshots
+![Homepage](https://ibb.co/6c7Y2wMf)
+![Homepage](https://ibb.co/sdRpHVV1)
+![Menu With category](https://ibb.co/mCSBQnj1)
+---
+
+## ✨ Features
+
+### 👨‍🍳 User Side
+- Responsive and modern restaurant UI
+- Browse menu by categories (Salads, Pizzas, Desserts, etc.)
+- Place orders and add items to cart
+- User authentication (login/register)
+- Leave reviews and book reservations
+
+### 🔐 Admin Panel
+- Role-based access control (Admin/User)
+- Add, update, or delete menu items (CRUD)
+- Manage all users and assign admin roles
+- View and manage customer orders
+- Secure routes with **JWT authentication**
+
+---
+
+## 🔧 Tech Stack
+
+| Frontend | Backend | Database | Authentication |
+|----------|---------|----------|----------------|
+| React.js | Express.js | MongoDB | Firebase & JWT |
+
+- **Tailwind CSS** – modern utility-first styling
+- **React Router** – for routing
+- **DaisyUI** – UI components
+- **Axios** – HTTP requests
+- **React Hook Form** – form handling
+
+---
+
+## 🛠️ Installation & Setup
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/yourusername/bistro-boss.git
+cd bistro-boss
+npm install
+npm run dev
+
