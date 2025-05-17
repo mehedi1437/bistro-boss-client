@@ -4,7 +4,7 @@ import Footer from "../Pages/Shared/Footer";
 
 const MainLayout = () => {
     const location = useLocation();
-    const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('sign-up')
+    const noHeaderFooter = location?.pathname.includes('login') || location.pathname.includes('sign-up')
     return (
         <div className="container mx-auto">
             { noHeaderFooter || <Navbar></Navbar>}
